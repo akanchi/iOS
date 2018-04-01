@@ -20,18 +20,22 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    lazy var game =  Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
+    private lazy var game =  Concentration(numberOfPairsOfCards: numberOfPairsOfCards)
+    
+    var numberOfPairsOfCards: Int {
+        return ((cardButtons.count + 1) / 2)
+    }
 
-    var filpCount = 0 {
+    private(set) var filpCount = 0 {
         didSet {
             flipCountLabel.text = "Flips: \(filpCount)"
         }
     }
     
-    @IBOutlet var cardButtons: [UIButton]!
-    @IBOutlet weak var flipCountLabel: UILabel!
+    @IBOutlet private var cardButtons: [UIButton]!
+    @IBOutlet private weak var flipCountLabel: UILabel!
     
-    @IBAction func touchCard(_ sender: UIButton) {
+    @IBAction private func touchCard(_ sender: UIButton) {
         filpCount += 1
         if let cardNumber = cardButtons.index(of:sender) {
             print("cardNumber = \(cardNumber)")
@@ -42,12 +46,12 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func onRestart(_ sender: UIButton) {
+    @IBAction private func onRestart(_ sender: UIButton) {
         game.reset()
         updateViewFromModel()
     }
     
-    func updateViewFromModel() {
+    private func updateViewFromModel() {
         for index in cardButtons.indices {
             let button = cardButtons[index]
             let card = game.cards[index]
@@ -67,17 +71,15 @@ class ViewController: UIViewController {
         }
     }
     
-    var emojiChoices = ["👻", "👺", "🎃", "😻", "🤡", "💩", "😝", "🤓"]
+    private var emojiChoices = ["👻", "👺", "🎃", "😻", "🤡", "💩", "😝", "🤓"]
     
-    var emoji = Dictionary<Int, String>()
+    private var emoji = Dictionary<Int, String>()
     
-    func emoji(for card: Card) -> String {
+    private func emoji(for card: Card) -> String {
         if emoji[card.identifier] == nil, emojiChoices.count > 0 {
-            let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
-            emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
+            emoji[card.identifier] = emojiChoices.remove(at: emojiChoices.count.arc4random)
         }
         
         return emoji[card.identifier] ?? "?"
     }
 }
-

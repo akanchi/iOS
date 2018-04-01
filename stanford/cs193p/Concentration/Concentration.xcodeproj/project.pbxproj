@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AA052962206FD3F80014B30E /* Concentration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA052961206FD3F80014B30E /* Concentration.swift */; };
 		AA052964206FD47F0014B30E /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA052963206FD47F0014B30E /* Card.swift */; };
+		AA05296620708B1D0014B30E /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA05296520708B1D0014B30E /* Extension.swift */; };
 		AA30145D206F97F000061636 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA30145C206F97F000061636 /* AppDelegate.swift */; };
 		AA30145F206F97F000061636 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA30145E206F97F000061636 /* ViewController.swift */; };
 		AA301462206F97F000061636 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA301460206F97F000061636 /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 /* Begin PBXFileReference section */
 		AA052961206FD3F80014B30E /* Concentration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Concentration.swift; sourceTree = "<group>"; };
 		AA052963206FD47F0014B30E /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		AA05296520708B1D0014B30E /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		AA301459206F97F000061636 /* Concentration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Concentration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA30145C206F97F000061636 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA30145E206F97F000061636 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 		AA30145B206F97F000061636 /* Concentration */ = {
 			isa = PBXGroup;
 			children = (
+				AA05296520708B1D0014B30E /* Extension.swift */,
 				AA30145C206F97F000061636 /* AppDelegate.swift */,
 				AA30145E206F97F000061636 /* ViewController.swift */,
 				AA301460206F97F000061636 /* Main.storyboard */,
@@ -142,6 +145,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA05296620708B1D0014B30E /* Extension.swift in Sources */,
 				AA30145F206F97F000061636 /* ViewController.swift in Sources */,
 				AA30145D206F97F000061636 /* AppDelegate.swift in Sources */,
 				AA052962206FD3F80014B30E /* Concentration.swift in Sources */,

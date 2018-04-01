@@ -12,10 +12,28 @@ class Concentration
 {
     var cards = [Card]()
     
-    var indexOfOneAndOnlyFaceUpCard: Int?
+    private var indexOfOneAndOnlyFaceUpCard: Int? {
+        get {
+            var foundIndex: Int?
+            for index in cards.indices {
+                if cards[index].isFaceUp {
+                    if foundIndex == nil {
+                        foundIndex = index
+                    } else {
+                        return nil
+                    }
+                }
+            }
+            return foundIndex
+        }
+        set {
+            for index in cards.indices {
+                cards[index].isFaceUp = (index == newValue)
+            }
+        }
+    }
     
     func chooseCard(at index: Int) {
-        cards[index].isFaceUp = !cards[index].isFaceUp
         if !cards[index].isMatched {
             if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != index {
                 if cards[matchIndex].identifier == cards[index].identifier {
@@ -23,12 +41,7 @@ class Concentration
                     cards[index].isMatched = true
                 }
                 cards[index].isFaceUp = true
-                indexOfOneAndOnlyFaceUpCard = nil
             } else {
-                for flipDownIndex in cards.indices {
-                    cards[flipDownIndex].isFaceUp = false
-                }
-                cards[index].isFaceUp = true;
                 indexOfOneAndOnlyFaceUpCard = index
             }
         }
@@ -38,8 +51,7 @@ class Concentration
         var tmpCards = cards
         cards = [Card]()
         while tmpCards.count > 0 {
-            let randomIndex = Int(arc4random_uniform(UInt32(tmpCards.count)))
-            var c = tmpCards.remove(at: randomIndex)
+            var c = tmpCards.remove(at: tmpCards.count.arc4random)
             c.isFaceUp = false
             c.isMatched = false
             cards += [c]
@@ -54,8 +66,7 @@ class Concentration
         }
         
         while tmpCards.count > 0 {
-            let randomIndex = Int(arc4random_uniform(UInt32(tmpCards.count)))
-            cards += [tmpCards.remove(at: randomIndex)]
+            cards += [tmpCards.remove(at: tmpCards.count.arc4random)]
         }
     }
 }
