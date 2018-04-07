@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ConcentrationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,6 +65,10 @@ class ViewController: UIViewController {
     }
     
     private func updateViewFromModel() {
+        if cardButtons == nil {
+            return;
+        }
+        
         for index in cardButtons.indices {
             let button = cardButtons[index]
             let card = game.cards[index]
@@ -81,6 +85,14 @@ class ViewController: UIViewController {
                     button.backgroundColor = #colorLiteral(red: 1, green: 0.6360918044, blue: 0.009636295493, alpha: 1)
                 }
             }
+        }
+    }
+    
+    var theme: String? {
+        didSet {
+            emojiChoices = theme ?? ""
+            emoji = [:]
+            updateViewFromModel()
         }
     }
     
